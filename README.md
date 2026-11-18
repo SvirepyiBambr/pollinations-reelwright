@@ -56,8 +56,9 @@ npx @pollinations/cli auth login             # one-time Pollinations sign-in, no
 ```
 
 Python 3.10+ and Node are enough; there are no Python packages to install.
-ffmpeg is resolved in this order: `$FFMPEG`, `PATH`, `node_modules`, then
-`npx ffmpeg-static`.
+ffmpeg is resolved in this order: `$FFMPEG` (or `$FFPROBE`), `PATH`, the
+binaries in `node_modules`, then the path exported by `ffmpeg-static` /
+`ffprobe-static` through Node.
 
 Reelwright authenticates in this order: `--api-key`, `POLLINATIONS_API_KEY`, then
 the key stored by `polli auth login` (`~/.pollinations/credentials.json`). The
