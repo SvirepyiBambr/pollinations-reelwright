@@ -15,7 +15,7 @@ speech-to-text for the final check. The only local dependency is ffmpeg.
 The key you supply is your own, so every render spends from your own Pollen
 balance — Reelwright never proxies traffic through someone else's account.
 
-![Five frames from The Salt Road](examples/salt-road/poster.jpg)
+![Reelwright preview: the opening of The Salt Road](examples/salt-road/preview.gif)
 
 ## The demo
 
