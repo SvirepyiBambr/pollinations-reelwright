@@ -1,5 +1,7 @@
 # Reelwright
 
+[![Made with pollinations.ai](https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg)](https://pollinations.ai/?ref=badge)
+
 **A brief in, a narrated film out.**
 
 Reelwright is an agent skill that turns one paragraph of intent into a finished
@@ -9,6 +11,9 @@ verification pass that proves the MP4 is really playable.
 
 Every creative step is a Pollinations API call — text, images, speech, and
 speech-to-text for the final check. The only local dependency is ffmpeg.
+
+The key you supply is your own, so every render spends from your own Pollen
+balance — Reelwright never proxies traffic through someone else's account.
 
 ![Five frames from The Salt Road](examples/salt-road/poster.jpg)
 
