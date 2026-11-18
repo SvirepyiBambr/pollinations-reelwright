@@ -139,8 +139,8 @@ python3 -m unittest discover -s tests -v      # 30 tests, no network, no ffmpeg
 
 The suite covers the parts that silently corrupt a video: JSON extraction from a
 chatty model, plan validation and repair triggers, ASS time formatting and line
-wrapping, and the timeline arithmetic of the committed demo. CI runs it on every
-push, so a broken caption writer fails there instead of in someone's render.
+wrapping, and the timeline arithmetic of the committed demo. It runs offline in
+under a second, so a broken caption writer fails before it burns any pollen.
 
 ## Limits
 
