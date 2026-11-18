@@ -1,0 +1,11 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Intermediates: silent per-scene clips and analysis frames are reproducible,
+# and would add ~90 MB per example. Everything else is committed on purpose.
+examples/*/clips/
+examples/*/frames/
+
+examples/*/build/

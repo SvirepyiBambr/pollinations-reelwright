@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "duration": 49.367,
+  "expected_duration": 49.378,
+  "size_bytes": 16373254,
+  "video": {
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1"
+  },
+  "audio": {
+    "codec": "aac",
+    "channels": 2
+  },
+  "scenes": 5,
+  "transcript": "A drop of rain lands on rough granite. Gravity pulls it over tiny grooves, collecting other runoff as it speeds toward lower ground. The flowing water threads through a mountain stream. It dissolves minerals from exposed rock, carrying them along as clear water turns faintly mineral-rich. The stream gathers more water and widens into a river. Minerals dissolved in the runoff travel downstream, staying mixed with the flowing water. At the ocean, sunlight heats the surface. Water evaporates as vapor, leaving dissolved salts behind as seawater becomes more concentrated over time. As evening cools the shore, water held near the sand dries. Salt crystallizes at the edge of the sea, and the cycle repeats with every new sky-returned drop.",
+  "transcript_coverage": 0.992,
+  "failures": [],
+  "warnings": [],
+  "checked_at": "2026-11-18T21:04:31Z"
+}

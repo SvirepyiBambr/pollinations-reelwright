@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "created_at": "2026-11-18T20:52:57Z",
+  "brief": "Title: The Salt Road.\n\nA 50-second mini-documentary explaining why the sea is salty. Follow one drop of rainwater from a granite mountain to the ocean. Five beats, in order:\n\n1. Rain lands on a granite mountain and begins to run downhill.\n2. A mountain stream cuts through rock and carries dissolved minerals.\n3. The river widens and carries its mineral load toward the sea.\n4. The sun heats the ocean; water rises as vapour, salt stays behind.\n5. Salt crystals on the shore at dusk; the sea keeps what the sky returns.\n\nVisual style: editorial gouache illustration, muted teal and amber palette, textured cold-press paper, soft grain, cinematic wide 16:9 composition, natural light.",
+  "title": "The Salt Road",
+  "subtitle": "One drop travels from granite to sea salt",
+  "style": "Editorial gouache illustration with muted teal and amber palette, textured cold-press paper, soft grain, cinematic wide 16:9 composition, natural light",
+  "scenes": [
+    {
+      "caption": "Rain hits granite and starts downhill",
+      "narration": "A drop of rain lands on rough granite. Gravity pulls it over tiny grooves, collecting other runoff as it speeds toward lower ground.",
+      "image_prompt": "Granite mountain face under overcast light; rain streaks fall on dark gray stone, water channels into small rivulets that converge down the slope. Cinematic wide 16:9, muted teal shadows and amber highlights, soft paper grain."
+    },
+    {
+      "caption": "Streams carve rock and pick up minerals",
+      "narration": "The flowing water threads through a mountain stream. It dissolves minerals from exposed rock, carrying them along as clear water turns faintly mineral-rich.",
+      "image_prompt": "Mountain stream narrow between angular rocks; water flows around pebbles, dissolving mineral-tinted sediment. Cold morning light glints on wet stones, foreground rocks sharp, background fades. Teal water with subtle amber reflections, gouache texture."
+    },
+    {
+      "caption": "A widening river carries the load",
+      "narration": "The stream gathers more water and widens into a river. Minerals dissolved in the runoff travel downstream, staying mixed with the flowing water.",
+      "image_prompt": "River widening through a rocky valley, banks covered with sparse shrubs; multiple channels merge into a broad, calm current. Sun breaks through clouds, warm amber edges on water, cinematic wide composition."
+    },
+    {
+      "caption": "Evaporation returns water, not salt",
+      "narration": "At the ocean, sunlight heats the surface. Water evaporates as vapour, leaving dissolved salts behind as seawater becomes more concentrated over time.",
+      "image_prompt": "Ocean horizon under bright afternoon light; sun rays shimmer on rippling water. A visible plume of warm vapour rises from the surface while salt residue hints at darker, denser water near shore. Teal and amber, wide 16:9."
+    },
+    {
+      "caption": "Salt crystals form as dusk falls",
+      "narration": "As evening cools the shore, water held near the sand dries. Salt crystallizes at the edge of the sea, and the cycle repeats with every new sky-returned drop.",
+      "image_prompt": "Dusk shoreline with shallow tidal flats; tiny salt crystals sparkle on wet sand near the waterline. The sea sits in the background with soft waves, cool teal tones, warm amber sky glow, textured paper grain."
+    }
+  ],
+  "models": {
+    "text": "openai/gpt-5.4-nano",
+    "image": "tongyi-mai/z-image-turbo",
+    "speech": "openai/tts-1",
+    "voice": "onyx"
+  },
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "fade": 0.6,
+    "pad": 0.65,
+    "image_size": "1792x1024"
+  }
+}

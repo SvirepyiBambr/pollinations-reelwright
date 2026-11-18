@@ -1,0 +1,60 @@
+{
+  "total": 49.378,
+  "scenes": [
+    {
+      "index": 1,
+      "caption": "Rain hits granite and starts downhill",
+      "narration": "A drop of rain lands on rough granite. Gravity pulls it over tiny grooves, collecting other runoff as it speeds toward lower ground.",
+      "image": "sc01.jpg",
+      "audio": "sc01.mp3",
+      "audio_duration": 8.28,
+      "duration": 8.93,
+      "start": 0.0,
+      "end": 8.93
+    },
+    {
+      "index": 2,
+      "caption": "Streams carve rock and pick up minerals",
+      "narration": "The flowing water threads through a mountain stream. It dissolves minerals from exposed rock, carrying them along as clear water turns faintly mineral-rich.",
+      "image": "sc02.jpg",
+      "audio": "sc02.mp3",
+      "audio_duration": 9.912,
+      "duration": 10.562,
+      "start": 8.93,
+      "end": 19.492
+    },
+    {
+      "index": 3,
+      "caption": "A widening river carries the load",
+      "narration": "The stream gathers more water and widens into a river. Minerals dissolved in the runoff travel downstream, staying mixed with the flowing water.",
+      "image": "sc03.jpg",
+      "audio": "sc03.mp3",
+      "audio_duration": 8.808,
+      "duration": 9.458,
+      "start": 19.492,
+      "end": 28.95
+    },
+    {
+      "index": 4,
+      "caption": "Evaporation returns water, not salt",
+      "narration": "At the ocean, sunlight heats the surface. Water evaporates as vapour, leaving dissolved salts behind as seawater becomes more concentrated over time.",
+      "image": "sc04.jpg",
+      "audio": "sc04.mp3",
+      "audio_duration": 9.36,
+      "duration": 10.01,
+      "start": 28.95,
+      "end": 38.96
+    },
+    {
+      "index": 5,
+      "caption": "Salt crystals form as dusk falls",
+      "narration": "As evening cools the shore, water held near the sand dries. Salt crystallizes at the edge of the sea, and the cycle repeats with every new sky-returned drop.",
+      "image": "sc05.jpg",
+      "audio": "sc05.mp3",
+      "audio_duration": 9.768,
+      "duration": 10.418,
+      "start": 38.96,
+      "end": 49.378
+    }
+  ]
+}
