@@ -27,9 +27,14 @@ that needs a real camera. Reelwright is an illustrated explainer, not a video ed
 ## Setup
 
 ```bash
-export POLLINATIONS_API_KEY=...      # https://enter.pollinations.ai
+npx @pollinations/cli auth login     # one-time Pollinations sign-in
 npm install                          # pulls ffmpeg-static + ffprobe-static
 ```
+
+Reelwright takes the key from `--api-key`, then `POLLINATIONS_API_KEY`, then the
+login stored by `polli auth login` at `~/.pollinations/credentials.json`. Prefer
+the sign-in: the user approves a device code in the browser and no key ever
+enters the conversation. Override with an env var when running in CI.
 
 If ffmpeg is already on PATH, Reelwright uses it. Otherwise it falls back to the
 static binaries in `node_modules`, then to `$FFMPEG` / `$FFPROBE`.
@@ -110,6 +115,10 @@ Defaults, all replaceable with flags:
 - text: `openai/gpt-5.4-nano` — one plan call, plus one repair call if validation fails
 - image: `tongyi-mai/z-image-turbo` — one call per scene
 - speech: `openai/tts-1`, voice `onyx` — one call per scene
+
+Every default is free-tier (`paid_only: false`), including the
+`openai/whisper-large-v3` transcription behind `--transcribe`, so a free account
+can run the whole pipeline end to end.
 
 A five-scene reel is five images and five short speech clips. Re-running `render`
 reuses anything already on disk; `--force` regenerates. `--seed` makes image

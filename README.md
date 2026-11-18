@@ -52,12 +52,19 @@ cannot: an audio track that is silent, truncated or in the wrong language.
 git clone https://github.com/SvirepyiBambr/pollinations-reelwright
 cd pollinations-reelwright
 npm install                                  # ffmpeg-static + ffprobe-static
-export POLLINATIONS_API_KEY=...              # https://enter.pollinations.ai
+npx @pollinations/cli auth login             # one-time Pollinations sign-in, no key handling
 ```
 
 Python 3.10+ and Node are enough; there are no Python packages to install.
 ffmpeg is resolved in this order: `$FFMPEG`, `PATH`, `node_modules`, then
 `npx ffmpeg-static`.
+
+Reelwright authenticates in this order: `--api-key`, `POLLINATIONS_API_KEY`, then
+the key stored by `polli auth login` (`~/.pollinations/credentials.json`). The
+recommended path is the Pollinations sign-in: it is a device flow, the key stays
+in polli's own store, and nothing secret ever passes through the agent or a
+shell history. An exported `POLLINATIONS_API_KEY` wins over the stored login, so
+CI can override it.
 
 ## Use
 
@@ -111,6 +118,11 @@ Model defaults: `openai/gpt-5.4-nano` for the plan, `tongyi-mai/z-image-turbo` f
 images, `openai/tts-1` with the `onyx` voice for narration. A five-scene reel is
 five images and five short speech clips.
 
+All four defaults — text, image, speech and the `openai/whisper-large-v3`
+transcription used by `--transcribe` — are free-tier models (`paid_only: false`
+in `https://gen.pollinations.ai/v1/models`). A free account can run the whole
+pipeline; a paid balance only makes it faster and less rate-limited.
+
 ## Agent skill
 
 [`skills/reelwright/SKILL.md`](skills/reelwright/SKILL.md) is written for an agent,
@@ -122,7 +134,7 @@ result instead of assuming it worked.
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -v      # 26 tests, no network, no ffmpeg
+python3 -m unittest discover -s tests -v      # 30 tests, no network, no ffmpeg
 ```
 
 The suite covers the parts that silently corrupt a video: JSON extraction from a

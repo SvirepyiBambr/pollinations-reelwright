@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import unittest.mock
 import sys
 import unittest
 from pathlib import Path
@@ -180,6 +181,51 @@ class ProjectFileTest(unittest.TestCase):
             )
             cursor += timing["duration"]
         self.assertAlmostEqual(timings["total"], cursor, places=2)
+
+
+class PolliCredentialsTest(unittest.TestCase):
+    def _read(self, tmp: Path, payload: dict | str) -> str:
+        path = tmp / "credentials.json"
+        path.write_text(payload if isinstance(payload, str) else json.dumps(payload), encoding="utf-8")
+        original = (rw.POLLI_CREDENTIALS, rw.POLLI_CREDENTIALS_STAGING)
+        rw.POLLI_CREDENTIALS = path
+        rw.POLLI_CREDENTIALS_STAGING = tmp / "missing.json"
+        try:
+            with unittest.mock.patch.dict("os.environ", {"POLLINATIONS_ENV": ""}):
+                return rw.polli_key()
+        finally:
+            rw.POLLI_CREDENTIALS, rw.POLLI_CREDENTIALS_STAGING = original
+
+    def test_reads_key_written_by_polli(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(self._read(Path(tmp), {"apiKey": "sk_test", "keyType": "sk"}), "sk_test")
+
+    def test_missing_file_is_not_an_error(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            original = (rw.POLLI_CREDENTIALS, rw.POLLI_CREDENTIALS_STAGING)
+            rw.POLLI_CREDENTIALS = Path(tmp) / "credentials.json"
+            rw.POLLI_CREDENTIALS_STAGING = Path(tmp) / "credentials.staging.json"
+            try:
+                with unittest.mock.patch.dict("os.environ", {"POLLINATIONS_ENV": ""}):
+                    self.assertEqual(rw.polli_key(), "")
+            finally:
+                rw.POLLI_CREDENTIALS, rw.POLLI_CREDENTIALS_STAGING = original
+
+    def test_blank_key_is_ignored(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(self._read(Path(tmp), {"apiKey": "  "}), "")
+
+    def test_malformed_json_is_ignored(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(self._read(Path(tmp), "{not json"), "")
 
 
 if __name__ == "__main__":

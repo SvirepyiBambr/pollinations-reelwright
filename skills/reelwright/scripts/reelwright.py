@@ -38,6 +38,11 @@ PAD = 0.65
 MIN_SCENE = 4.0
 USER_AGENT = "reelwright/1.0 (+https://github.com/SvirepyiBambr/pollinations-reelwright)"
 
+# Written by `polli auth login`; Reelwright reads it so an agent that signed in
+# with Pollinations never has to handle a key itself.
+POLLI_CREDENTIALS = Path.home() / ".pollinations" / "credentials.json"
+POLLI_CREDENTIALS_STAGING = Path.home() / ".pollinations" / "credentials.staging.json"
+
 
 def log(message: str) -> None:
     print(message, flush=True)
@@ -59,12 +64,27 @@ def read_brief(value: str) -> str:
     return value
 
 
+def polli_key() -> str:
+    """Return the key stored by `polli auth login`, or an empty string."""
+    staging = os.environ.get("POLLINATIONS_ENV", "").strip().lower() == "staging"
+    for path in ((POLLI_CREDENTIALS_STAGING, POLLI_CREDENTIALS) if staging else (POLLI_CREDENTIALS,)):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        key = str(data.get("apiKey") or "").strip()
+        if key:
+            return key
+    return ""
+
+
 def api_key(explicit: str | None) -> str:
-    key = explicit or os.environ.get("POLLINATIONS_API_KEY", "").strip()
+    key = explicit or os.environ.get("POLLINATIONS_API_KEY", "").strip() or polli_key()
     if not key:
         die(
-            "POLLINATIONS_API_KEY is not set. Create a key at "
-            "https://enter.pollinations.ai and export it, or pass --api-key."
+            "Not signed in to Pollinations. Run `polli auth login` once "
+            "(https://www.npmjs.com/package/@pollinations/cli), or export "
+            "POLLINATIONS_API_KEY, or pass --api-key."
         )
     return key
 
